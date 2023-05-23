@@ -1,12 +1,22 @@
-name: Spellcheck Action
-on: push
+name: Spellcheck
+
+on:
+  push:
+    branches:
+      - main  # Replace with the branch name you want to trigger the workflow on
 
 jobs:
-  build:
-    name: Spellcheck
+  spellcheck:
     runs-on: ubuntu-latest
+
     steps:
-    # The checkout step
-    - uses: actions/checkout@v3
-    - uses: rojopolis/spellcheck-github-actions@0.32.0
-      name: Spellcheck
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y aspell
+
+      - name: Spellcheck text files
+        run: |
+          find . -name "*.txt" -type f -print0 | xargs -0 -n1 aspell --check
