@@ -9,12 +9,11 @@ on:
       - main
 
 jobs:
-    misspell:
-      name: Check spelling with misspell
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Install
-          run: wget -O - -q https://git.io/misspell | sh -s -- -b .
-        - name: Misspell
-          run: ./misspell -error
+  spellcheck:
+    name: runner / spellcheck
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code.
+      uses: actions/checkout@v2
+    - name: Run PySpelling as a GitHub action
+      uses: sbates130272/spellcheck-github-actions@v0.6.0
