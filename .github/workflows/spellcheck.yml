@@ -10,16 +10,21 @@ on:
 
 jobs:
   spellcheck:
-    name: runner / spellcheck
+    name: Spellcheck
     runs-on: ubuntu-latest
+
     steps:
-    - name: Check out code.
-      uses: actions/checkout@v2
-    - name: Spell Checker Action
-      uses: wow-actions/spell-checker@v1.0.3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        include: |
-          **/*.md
-          **/*.txt
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16
+
+      - name: Install cspell
+        run: npm install -g cspell
+
+      - name: Spellcheck text files
+        run: cspell --no-color --no-progress "**/*.txt"
 
