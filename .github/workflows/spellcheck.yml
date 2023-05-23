@@ -22,4 +22,4 @@ jobs:
 
       - name: Spellcheck text files
         run: |
-          find . -name "*.txt" -type f -print0 | xargs -0 -n1 aspell --check
+          find . -name "*.txt" -type f -print0 | xargs -0 -n1 aspell --mode=none --lang=en_US --check
