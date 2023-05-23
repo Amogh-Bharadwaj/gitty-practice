@@ -3,7 +3,10 @@ name: Spellcheck
 on:
   push:
     branches:
-      - main  # Replace with the branch name you want to trigger the workflow on
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   spellcheck:
