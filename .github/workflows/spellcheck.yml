@@ -1,0 +1,30 @@
+name: Spellcheck
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  spellcheck:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 16
+
+      - name: Install cspell
+        run: npm install -g cspell
+
+      - name: Spellcheck text files
+        run: cspell --no-color --no-progress "**/*.txt"
+
