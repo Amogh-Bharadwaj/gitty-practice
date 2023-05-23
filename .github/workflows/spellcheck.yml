@@ -10,11 +10,11 @@ on:
 
 jobs:
     misspell:
-    name: Check spelling with misspell
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install
-        run: wget -O - -q https://git.io/misspell | sh -s -- -b .
-      - name: Misspell
-        run: ./misspell -error
+      name: Check spelling with misspell
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Install
+          run: wget -O - -q https://git.io/misspell | sh -s -- -b .
+        - name: Misspell
+          run: ./misspell -error
