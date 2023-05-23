@@ -10,5 +10,3 @@ jobs:
     - uses: actions/checkout@v3
     - uses: rojopolis/spellcheck-github-actions@0.32.0
       name: Spellcheck
-      with:
-        source_files: story.txt
